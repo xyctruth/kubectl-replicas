@@ -1,0 +1,29 @@
+project_name: kubectl-replicas
+release:
+  github:
+    owner: xyctruth
+    name: kubectl-replicas
+builds:
+  - id: kubectl-replicas
+    main: ./
+    binary: kubectl-replicas
+    env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - "386"
+      - arm64
+
+archives:
+  - id: kubectl-replicas
+    builds:
+      - kubectl-replicas
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip

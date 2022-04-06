@@ -1,0 +1,51 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: replicas
+spec:
+  version: {{ .TagName }}
+  homepage: https://github.com/xyctruth/kubectl-replicas
+  platforms:
+  - selector:
+      matchLabels:
+        os: linux
+        arch: amd64
+    {{addURIAndSha "https://github.com/xyctruth/kubectl-replicas/releases/download/{{ .TagName }}/kubectl-replicas_linux_amd64.tar.gz" .TagName }}
+    bin: kubectl-replicas
+  - selector:
+      matchLabels:
+        os: linux
+        arch: arm64
+    {{addURIAndSha "https://github.com/xyctruth/kubectl-replicas/releases/download/{{ .TagName }}/kubectl-replicas_linux_arm64.tar.gz" .TagName }}
+    bin: kubectl-replicas
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: amd64
+    {{addURIAndSha "https://github.com/xyctruth/kubectl-replicas/releases/download/{{ .TagName }}/kubectl-replicas_darwin_amd64.tar.gz" .TagName }}
+    bin: kubectl-replicas
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: arm64
+    {{addURIAndSha "https://github.com/xyctruth/kubectl-replicas/releases/download/{{ .TagName }}/kubectl-replicas_darwin_arm64.tar.gz" .TagName }}
+    bin: kubectl-replicas
+  - selector:
+      matchLabels:
+        os: windows
+        arch: amd64
+    {{addURIAndSha "https://github.com/xyctruth/kubectl-replicas/releases/download/{{ .TagName }}/kubectl-replicas_windows_amd64.zip" .TagName }}
+    bin: kubectl-replicas.exe
+  - selector:
+      matchLabels:
+        os: windows
+        arch: arm64
+    {{addURIAndSha "https://github.com/xyctruth/kubectl-replicas/releases/download/{{ .TagName }}/kubectl-replicas_windows_arm64.zip" .TagName }}
+    bin: kubectl-replicas.exe
+  shortDescription: Stash replicas of deployment
+  description: |
+    Usage:
+      kubectl replicas stash -n <namespace-name> 
+      kubectl replicas stash -n <namespace-name> 
+      This plugin stash replicas of deployment, save some resources.
+      Read more documentation at: https://github.com/xyctruth/kubectl-replicas
