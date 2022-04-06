@@ -46,6 +46,6 @@ spec:
   description: |
     Usage:
       kubectl replicas stash -n <namespace-name> 
-      kubectl replicas stash -n <namespace-name> 
+      kubectl replicas recover -n <namespace-name> 
       This plugin stash replicas of deployment, save some resources.
       Read more documentation at: https://github.com/xyctruth/kubectl-replicas

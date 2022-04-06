@@ -12,7 +12,7 @@ $ kubectl-replicas stash -n test # or (kubectl replicas stash -n test)
 "app2" stash replicas succeed
 "app3" stash replicas succeed
 ```
-
+Set the deployment's `Spec.Replicas` to 0, and backup the `Spec.Replicas` to the deployment's Annotations.
 ```
 $ kubectl get deployments -n test
 NAME       READY   STATUS    RESTARTS       AGE
@@ -29,7 +29,7 @@ $ kubectl-replicas recover -n test # or (kubectl replicas stash -n test)
 "app2" recover replicas 2 succeed
 "app3" recover replicas 3 succeed
 ```
-
+Recover deployment's `Spec.Replicas`
 ```bash
 $ kubectl get deployments -n test
 NAME       READY   STATUS    RESTARTS       AGE
