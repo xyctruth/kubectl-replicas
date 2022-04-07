@@ -1,4 +1,4 @@
-# kubectl-stash
+# kubectl-replicas
 
 This plugin stash replicas of deployment, save some resources.
 
@@ -6,13 +6,15 @@ This plugin stash replicas of deployment, save some resources.
 
 ### Stash replicas of deployment
 
+Set the deployment's `Spec.Replicas` to 0, and backup the `Spec.Replicas` to the deployment's Annotations.
+
 ```bash
 $ kubectl-replicas stash -n test # or (kubectl replicas stash -n test)
 "app1" stash replicas succeed
 "app2" stash replicas succeed
 "app3" stash replicas succeed
 ```
-Set the deployment's `Spec.Replicas` to 0, and backup the `Spec.Replicas` to the deployment's Annotations.
+
 ```
 $ kubectl get deployments -n test
 NAME       READY   STATUS    RESTARTS       AGE
@@ -23,13 +25,15 @@ app3       0/3     1            0           141d
 
 ### Recover replicas of deployment
 
+Recover deployment's `Spec.Replicas`
+
 ```bash
 $ kubectl-replicas recover -n test # or (kubectl replicas stash -n test)
 "app1" recover replicas 1 succeed
 "app2" recover replicas 2 succeed
 "app3" recover replicas 3 succeed
 ```
-Recover deployment's `Spec.Replicas`
+
 ```bash
 $ kubectl get deployments -n test
 NAME       READY   STATUS    RESTARTS       AGE
